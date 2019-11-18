@@ -3,7 +3,12 @@ import Axios from "axios";
 import { baseURL } from "../config";
 import { Redirect } from "react-router-dom"; //로그인했을때 메인페이지로 오게 하는 것
 
-export default function Login({ isLoggedIn, setIsLoggedIn, setIsAdmin }) {
+export default function Login({
+  isLoggedIn,
+  setIsLoggedIn,
+  setIsAdmin,
+  history
+}) {
   const [loginState, setLoginState] = useState("init");
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,6 +65,13 @@ export default function Login({ isLoggedIn, setIsLoggedIn, setIsAdmin }) {
         </div>
         <button type="submit" class="btn btn-primary">
           Submit
+        </button>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={() => history.push("/join")}
+        >
+          Sign up
         </button>
       </form>
     </>

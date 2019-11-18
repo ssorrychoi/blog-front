@@ -15,7 +15,7 @@ export default function App() {
   const auth = { isLoggedIn, isAdmin, setIsLoggedIn, setIsAdmin };
   return (
     <BrowserRouter>
-      <Nav />
+      <Nav {...auth} />
       <Header />
       <Route exact path="/" component={Home} />
       <Route path="/login" render={(props) => <Login {...props} {...auth} />} />

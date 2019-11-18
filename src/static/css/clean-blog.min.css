@@ -353,6 +353,17 @@ footer .copyright {
   background-color: #e65550 !important;
   border-color: #e65550 !important;
 }
+.btn-secondary {
+  background-color: #469cff;
+  border-color: #469cff;
+}
+.btn-secondary:active,
+.btn-secondary:focus,
+.btn-secondary:hover {
+  color: #fff;
+  background-color: #469cff !important;
+  border-color: #469cff !important;
+}
 .btn-lg {
   font-size: 16px;
   padding: 25px 35px;

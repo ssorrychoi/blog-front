@@ -1,0 +1,48 @@
+{
+  "name": "blog-front",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2",
+    "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "aws s3 sync ./build s3://mern-binsansong-blog-front --profile=binsansong"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "airbnb"
+    ],
+    "rules": {
+      "react/jsx-filename-extension": 0,
+      "linebreak-style": 0,
+      "react-hooks/exhaustive-deps": 0
+    },
+    "env": {
+      "browser": true
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

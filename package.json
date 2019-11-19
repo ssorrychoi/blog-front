@@ -9,8 +9,10 @@
     "eslint-config-airbnb": "^18.0.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-markdown": "^4.2.2",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "react-textarea-autosize": "^7.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,7 +29,9 @@
     "rules": {
       "react/jsx-filename-extension": 0,
       "linebreak-style": 0,
-      "react-hooks/exhaustive-deps": 0
+      "react-hooks/exhaustive-deps": 0,
+      "jsx-a11y/click-events-have-key-events": 0,
+      "jsx-a11y/no-noninteractive-element-interactions": 0
     },
     "env": {
       "browser": true

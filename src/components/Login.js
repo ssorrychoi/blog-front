@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import { baseURL } from "../config";
+import { baseURL } from "../common/config";
 import { Redirect } from "react-router-dom"; //로그인했을때 메인페이지로 오게 하는 것
 
 export default function Login({

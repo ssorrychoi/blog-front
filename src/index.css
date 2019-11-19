@@ -1,0 +1,10 @@
+.write {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.write-vertical {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}

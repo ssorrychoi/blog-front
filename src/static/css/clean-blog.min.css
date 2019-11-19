@@ -364,6 +364,29 @@ footer .copyright {
   background-color: #469cff !important;
   border-color: #469cff !important;
 }
+.btn-third {
+  font-size: 14px;
+  font-weight: 800;
+  padding: 10px 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 0;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
+
+  background-color: #fbb6fb;
+  border-color: #fbb6fb;
+}
+.btn-third:active,
+.btn-third:focus,
+.btn-third:hover {
+  color: #fff;
+  background-color: #469cff !important;
+  border-color: #469cff !important;
+}
 .btn-lg {
   font-size: 16px;
   padding: 25px 35px;

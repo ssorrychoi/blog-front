@@ -1,7 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function Nav({ isLoggedIn, setIsLoggedIn, setIsAdmin }) {
+import getCookie from "../common/getCookie";
+
+export default function Nav({
+  isLoggedIn,
+  setIsLoggedIn,
+  setIsAdmin,
+  isAdmin
+}) {
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isMenuOpened, setIsMenuOpened] = useState(false);
+
   const logout = () => {
     //만료시간을 현재시간으로 변경해서 쿠키를 파괴함.
     document.cookie = `Authorization=;expires=${new Date().toUTCString()}`;
@@ -10,6 +20,16 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, setIsAdmin }) {
   };
   useEffect(() => {
     setIsLoggedIn(document.cookie.includes("Authorization"));
+    // admin 쿠키 유지
+    if (document.cookie.includes("Authorization")) {
+      const jwt = getCookie("Authorization").split(" ")[1];
+      console.log(jwt);
+      const payload = jwt.split(".")[1];
+      console.log(payload);
+      const { admin } = JSON.parse(atob(payload));
+      console.log({ admin });
+      setIsAdmin(admin);
+    }
   }, []);
   return (
     <nav
@@ -20,18 +40,59 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, setIsAdmin }) {
         <a className="navbar-brand" href="index.html">
           쏘리초이's 블로그
         </a>
-        <button className="navbar-toggler navbar-toggler-right" type="button">
+        <button
+          className="navbar-toggler navbar-toggler-right"
+          type="button"
+          onClick={() => {
+            setIsCollapsed(!isCollapsed);
+            setIsMenuOpened(!isMenuOpened);
+          }}
+        >
           Menu
           <i className="fas fa-bars" />
         </button>
-        <div className="collapse navbar-collapse" id="navbarResponsive">
+        <div
+          className={`collapse navbar-collapse ${!isCollapsed && "show"}`}
+          id="navbarResponsive"
+        >
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
+            <li
+              className="nav-item"
+              onClick={() => {
+                if (isMenuOpened) {
+                  setIsCollapsed(!isCollapsed);
+                  setIsMenuOpened(!isMenuOpened);
+                }
+              }}
+            >
               <Link className="nav-link" to="/">
                 Home
               </Link>
             </li>
-            <li className="nav-item">
+            {isAdmin && (
+              <li
+                className="nav-item"
+                onClick={() => {
+                  if (isMenuOpened) {
+                    setIsCollapsed(!isCollapsed);
+                    setIsMenuOpened(!isMenuOpened);
+                  }
+                }}
+              >
+                <Link className="nav-link" to="/write">
+                  POST
+                </Link>
+              </li>
+            )}
+            <li
+              className="nav-item"
+              onClick={() => {
+                if (isMenuOpened) {
+                  setIsCollapsed(!isCollapsed);
+                  setIsMenuOpened(!isMenuOpened);
+                }
+              }}
+            >
               {isLoggedIn ? (
                 <a className="nav-link" onClick={logout}>
                   Logout
